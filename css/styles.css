@@ -40,7 +40,6 @@ body {
   line-height: 1.17em;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--logo-color);
   margin-right: 76px;
   display: inline-block;
   padding: 24px 0 24px 0;
@@ -49,6 +48,7 @@ body {
 
 .link {
   text-decoration: none;
+  color: inherit;
 }
 
 .header-span {
@@ -71,6 +71,10 @@ nav,
   display: flex;
 }
 
+nav {
+  color: var(--logo-color);
+}
+
 .nav-container {
   align-items: center;
   justify-content: space-between;
@@ -87,8 +91,13 @@ nav,
   letter-spacing: 0.02em;
   color: var(--nav-item-color);
 }
-li:not(:last-child) .nav-item,
+/* li:not(:last-child) .nav-item,
 li:not(:last-child) .contacts-item {
+  margin-right: 40px;
+} */
+
+ul .nav-item:not(:last-child),
+ul .contacts-item:not(:last-child) {
   margin-right: 40px;
 }
 
@@ -111,6 +120,28 @@ li:not(:last-child) .contacts-item {
 .contacts-item:hover,
 .contacts-item:focus {
   color: #404bbf;
+}
+
+.nav-container li {
+  position: relative;
+}
+
+.current_page::after {
+  content: "";
+
+  position: absolute;
+  bottom: -24px;
+  /* left: 0; */
+
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: var(--hover-btn-color);
+}
+
+.current_page {
+  color: var(--hover-btn-color);
 }
 
 /* HERO */
