@@ -9,6 +9,7 @@
   --hover-social-media-link-color: #31d0aa;
   --cornflower-color: #e7e9fc;
   --customers-link-color: #8e8f99;
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -420,6 +421,8 @@ main .section:nth-child(4n) {
   padding: 12px 24px 12px 24px;
   border: 1px solid var(--cornflower-color);
   border-radius: 4px;
+  transition: background-color var(--transition), color var(--transition),
+    box-shadow var(--transition), border-color var(--transition);
 }
 
 .filter-btn:hover {
@@ -467,8 +470,37 @@ main .section:nth-child(4n) {
     0px 1px 6px 0px #2e2f4214;
 }
 
+.card:focus .thumb-overlay,
+.card:hover .thumb-overlay {
+  transform: translateY(0);
+}
+
 .card-description {
   padding: 32px 16px;
+}
+
+/* OVERLAY  */
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.thumb-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  font-size: 16px;
+  line-height: calc(24 / 16);
+  letter-spacing: 0.03em;
+  background-color: var(--logo-color);
+  color: var(--cloud-color);
+  margin: 0;
+  transform: translateY(100%);
+  transition: transform var(--transition);
 }
 
 /* MODAL */
@@ -502,9 +534,9 @@ main .section:nth-child(4n) {
   background-color: #fff;
 }
 
-body:not(:has(.backdrop.is-hidden)) {
+/* body:not(:has(.backdrop.is-hidden)) & body:not(:has(.filter-btn)) {
   overflow: hidden;
-}
+} */
 
 .close-btn {
   position: absolute;
