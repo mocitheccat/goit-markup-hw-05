@@ -492,14 +492,47 @@ main .section:nth-child(4n) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow: scroll;
 
-  min-height: 300px;
-  min-width: 400px;
-  padding: 15px;
+  height: calc(100vh - 88px);
+  max-width: 408px;
+  padding: 24px;
+  border-radius: 4px;
 
   background-color: #fff;
 }
 
 body:not(:has(.backdrop.is-hidden)) {
   overflow: hidden;
+}
+
+.close-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--cornflower-color);
+  cursor: pointer;
+}
+
+.close-icon {
+  fill: #000;
+  width: 8px;
+  height: 8px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  background-color: var(--hover-btn-color);
+}
+
+.close-btn:hover .close-icon,
+.close-btn:focus .close-icon {
+  fill: #ffffff;
 }
