@@ -12,6 +12,10 @@
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.unscrolled {
+  overflow: hidden;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   color: #434455;
@@ -449,9 +453,10 @@ main .section:nth-child(4n) {
 
 /* CARDS */
 
-.link > img {
-  object-fit: contain;
-  max-width: 100%;
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .card {
@@ -526,12 +531,18 @@ main .section:nth-child(4n) {
   pointer-events: none;
 }
 
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+}
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   overflow: scroll;
+  opacity: 1;
 
   height: calc(100vh - 88px);
   max-width: 408px;
@@ -539,11 +550,8 @@ main .section:nth-child(4n) {
   border-radius: 4px;
 
   background-color: #fff;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms linear;
 }
-
-/* body:not(:has(.backdrop.is-hidden)) & body:not(:has(.filter-btn)) {
-  overflow: hidden;
-} */
 
 .close-btn {
   position: absolute;
@@ -558,12 +566,14 @@ main .section:nth-child(4n) {
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: var(--cornflower-color);
   cursor: pointer;
+  transition: background-color var(--transition);
 }
 
 .close-icon {
   fill: #000;
   width: 8px;
   height: 8px;
+  transition: fill var(--transition);
 }
 
 .close-btn:hover,
